@@ -97,7 +97,7 @@ declare module 'react-native-callkeep' {
 
     static setReachable(): void
 
-    static isCallActive(uuid: string): Promise<boolean>
+    static isCallActive(uuid: string, callback: (error: any, active: any) => void): void
 
     /**
      * @description supportConnectionService method is available only on Android.

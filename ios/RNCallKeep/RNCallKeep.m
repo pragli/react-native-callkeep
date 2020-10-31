@@ -303,12 +303,12 @@ RCT_EXPORT_METHOD(sendDTMF:(NSString *)uuidString dtmf:(NSString *)key)
     [self requestTransaction:transaction];
 }
 
-RCT_EXPORT_METHOD(isCallActive:(NSString *)uuidString)
+RCT_EXPORT_METHOD(isCallActive:(NSString *)uuidString withCallback:(RCTResponseSenderBlock)callback)
 {
 #ifdef DEBUG
     NSLog(@"[RNCallKeep][isCallActive] uuid = %@", uuidString);
 #endif
-    [RNCallKeep isCallActive: uuidString];
+    callback(@[[NSNull null], [NSNumber numberWithBool:[RNCallKeep isCallActive: uuidString]]]);
 }
 
 - (void)requestTransaction:(CXTransaction *)transaction
