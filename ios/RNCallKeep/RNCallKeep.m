@@ -210,6 +210,10 @@ RCT_EXPORT_METHOD(endCall:(NSString *)uuidString)
 #ifdef DEBUG
     NSLog(@"[RNCallKeep][endCall] uuidString = %@", uuidString);
 #endif
+    [self endCallInner:uuidString];
+}
+
+- (void) endCallInner: (NSString *) uuidString {
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:uuidString];
     CXEndCallAction *endCallAction = [[CXEndCallAction alloc] initWithCallUUID:uuid];
     CXTransaction *transaction = [[CXTransaction alloc] initWithAction:endCallAction];
